@@ -1,0 +1,16 @@
+1) Ask User , Folder Path (Containing Different Extension File)
+	1) Source Folder Path
+	2) Destination Folder Path
+
+2) Prerequiste Check
+	-->  Valid Path (Source Folder & Destination Folder)
+	-->  Is Empty (Source Folder) & Destination Folder)
+			.) Source Folder = Not Empty
+			.) Destination Folder = Should Empty
+	-->  Copy Permission (Source Folder)
+	-->  Write Permission (Destination Folder)
+
+3) Check if Path Valid or Not
+	-> If Not : While Loop (User Input : Step 2)
+	-> If Yes : Step 3
+4) Calculate Total Number of Files
