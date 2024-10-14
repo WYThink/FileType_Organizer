@@ -25,3 +25,8 @@
 - Enter the source folder path when prompted.
 - Specify the destination folder where organized files will be stored.
 - The application will notify if a file with the same name already exists.
+
+## Demo
+
+https://github.com/user-attachments/assets/e83af568-d1b1-4d60-aa33-a1d01f5618dd
+
