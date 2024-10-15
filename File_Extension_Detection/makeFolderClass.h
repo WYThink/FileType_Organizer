@@ -5,9 +5,8 @@
 
 #include <iostream>
 #include <filesystem>
-#include <thread>
-#include <mutex>
 #include "sharedBuffer.h"
+#include "boost/thread.hpp"
 
 class makeFolderClass
 {
@@ -29,7 +28,7 @@ private:
 
 public:
 	//Thread Object
-	std::thread makeFolderThread;
+	boost::thread makeFolderThread;
 
 	//Constructor
 	makeFolderClass(const std::string_view path , sharedBuffer* sharedObject);

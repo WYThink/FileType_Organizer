@@ -5,18 +5,17 @@
 
 #include <iostream>
 #include <vector>
-#include <mutex>
-#include <condition_variable>
+#include "boost/thread.hpp"
 
 //Shared Buffer Class
 class sharedBuffer
 {
 private:
 	//Mutex Obejct
-	std::mutex mtx;
+	boost::mutex mtx;
 
 	//Conditional Variable
-	std::condition_variable cv;
+	boost::condition_variable cv;
 
 	//"Ready" variable
 	bool ready{ false };

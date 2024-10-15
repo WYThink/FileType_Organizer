@@ -4,9 +4,9 @@
 #define __THREADCLASS__
 
 #include <iostream>
-#include <thread>
 #include <vector>
 #include "sharedBuffer.h"
+#include "boost/thread.hpp"
 
 //Thread Class
 class threadCreation
@@ -20,7 +20,7 @@ private:
 
 public:
 	//Thread Creation
-	std::thread waitThreadCreation;
+	boost::thread waitThreadCreation;
 	
 	//Constructor
 	threadCreation(sharedBuffer* sharedObject);

@@ -1,10 +1,8 @@
 #include <iostream>
-#include <fstream>
-#include <filesystem>
 #include <string>
-#include <cmath>
 #include <vector>
 #include "fileExtension.h"
+#include "boost/filesystem.hpp"
 
 //Source folder_Path_Input Function
 void extension::source_folder_Path_Input()
@@ -35,13 +33,13 @@ void extension::sizeCalc(const std::string_view sourceFolder)
 	std::uintmax_t tmp{};
 
 	//Iterate over all the items inside folder
-	for (const auto& path : std::filesystem::recursive_directory_iterator(sourceFolder))
+	for (const auto& path : boost::filesystem::recursive_directory_iterator(sourceFolder))
 	{
 		//Checking if its a file and also checking if it has a extension and calculating total files and file size 
-		if (std::filesystem::is_regular_file(path) && ((std::filesystem::path(path)).has_extension()))
+		if (boost::filesystem::is_regular_file(path) && ((boost::filesystem::path(path)).has_extension()))
 		{
 			//Calculating Size
-			tmp += std::filesystem::file_size(path);
+			tmp += boost::filesystem::file_size(path);
 
 			//Total Files
 			totalFiles += 1;
@@ -59,12 +57,12 @@ void extension::allExtension(const std::string_view sourceFolder)
 	buffer->bufferLockMutex();
 
 	//Iterate over all the items inside folder
-	for (const auto& path : std::filesystem::recursive_directory_iterator(sourceFolder))
+	for (const auto& path : boost::filesystem::recursive_directory_iterator(sourceFolder))
 	{
-		if (std::filesystem::is_regular_file(path) && ((std::filesystem::path(path)).has_extension()))
+		if (boost::filesystem::is_regular_file(path) && ((boost::filesystem::path(path)).has_extension()))
 		{
 			//Pushing File Extension to extenSion variable
-			buffer->bufferInput(((std::filesystem::path(path)).extension()).string());
+			buffer->bufferInput(((boost::filesystem::path(path)).extension()).string());
 		}
 	}
 

@@ -5,9 +5,9 @@
 
 #include <iostream>
 #include <vector>
-#include <thread>
 #include "sharedBuffer.h"
 #include "makeFolderClass.h"
+#include "boost/thread.hpp"
 
 //Class for Copying Files 
 class copyFiles
@@ -40,7 +40,7 @@ private:
 
 public:
 	//Thread Object
-	std::thread copyFileThread;
+	boost::thread copyFileThread;
 	
 	//Vector of fullPath structs
 	std::vector<struct fullPath> pathVar{};

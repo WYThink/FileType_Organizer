@@ -1,15 +1,13 @@
 #include <iostream>
 #include <vector>
-#include <thread>
-#include <mutex>
-#include <condition_variable>
 #include "sharedBuffer.h"
+#include "boost/thread.hpp"
 
 //Lock The Mutex
 void sharedBuffer::bufferLockMutex()
 {
 	//Lock Mutex
-	std::unique_lock<std::mutex> lock(mtx);
+	boost::unique_lock<boost::mutex> lock(mtx);
 
 	//Waiting Thread
 	cv.wait(lock, [this] { return !ready; });
@@ -47,7 +45,7 @@ int sharedBuffer::buffSize()
 void sharedBuffer::bufferUnlockMutex()
 {
 	//Locking the mutex
-	std::unique_lock<std::mutex> lock(mtx);
+	boost::unique_lock<boost::mutex> lock(mtx);
 
 	//Unlock the Object
 	ready = false;

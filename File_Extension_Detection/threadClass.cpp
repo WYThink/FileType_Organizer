@@ -1,6 +1,4 @@
 #include <iostream>
-#include <thread>
-#include <mutex>
 #include <vector>
 #include <algorithm>
 #include "threadClass.h"

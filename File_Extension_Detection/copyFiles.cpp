@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-#include <thread>
-#include <filesystem>
 #include "copyFiles.h"
+#include "boost/thread.hpp"
+#include "boost/filesystem.hpp"
 
 //File Path Iterator
 void copyFiles::filePathIterator()
@@ -11,14 +11,14 @@ void copyFiles::filePathIterator()
 	buffer->bufferLockMutex();
 
 	//Iterating Over all files & Copying All the Files Path
-	for (const auto& filePath : std::filesystem::recursive_directory_iterator(sourceFolderPath.c_str()))
+	for (const auto& filePath : boost::filesystem::recursive_directory_iterator(sourceFolderPath.c_str()))
 	{
 		//Checking if file is an regular file and also checking if it has an extension
-		if (std::filesystem::is_regular_file(filePath) && ((std::filesystem::path)(filePath)).has_extension())
+		if (boost::filesystem::is_regular_file(filePath) && ((boost::filesystem::path)(filePath)).has_extension())
 		{
 			for (int i = 0; i < bufSize; i++)
 			{
-				if (((std::filesystem::path)(filePath)).extension().string() == (*bufferPointer)[i])
+				if (((boost::filesystem::path)(filePath)).extension().string() == (*bufferPointer)[i])
 				{
 					//Pushing the Whole Path of file as String
 					pathVar[i].pathStore.push_back(filePath.path().string().c_str());
@@ -41,7 +41,7 @@ void copyFiles::finalyCopy()
 		for (int j = 0; j < pathVar[i].pathStore.size(); j++)
 		{
 			//Calling copy() of filesystem Library also using "overwrite_existing" flag
-			std::filesystem::copy(pathVar[i].pathStore[j].c_str(), (((*newFolderPathPointer)[i]).c_str()) , std::filesystem::copy_options::overwrite_existing);
+			boost::filesystem::copy(pathVar[i].pathStore[j].c_str(), (((*newFolderPathPointer)[i]).c_str()) , boost::filesystem::copy_options::overwrite_existing);
 		}
 	}
 }
@@ -65,7 +65,7 @@ copyFiles::copyFiles(sharedBuffer* sharedObject, const std::string_view sourcePa
 	newFolderPathPointer = makeFolderObject->constnewFolderPathPointer();
 
 	//Starting Thread Execution
-	copyFileThread = std::thread(&copyFiles::filePathIterator, this);
+	copyFileThread = boost::thread(&copyFiles::filePathIterator, this);
 }
 
 //Destructor

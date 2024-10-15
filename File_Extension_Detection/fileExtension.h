@@ -25,10 +25,10 @@ private:
 	//Calculate Total Files
 	std::uintmax_t totalFiles{};
 
-	//sharedBuffer Object
+	//sharedBuffer Object Pointer
 	sharedBuffer* buffer;
 
-	//threadCreation Object
+	//threadCreation Object Pointer
 	threadCreation* thread;
 
 public:
