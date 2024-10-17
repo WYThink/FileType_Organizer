@@ -52,11 +52,11 @@
    - Navigate to **Project > Properties > Linker > Input > Additional Dependencies**.  
    - Add the names of the required libraries:
    - **Release**
-     - For Threading, include `boost_thread-vc143-mt-x64-1_85.lib`.
      - For Filesystem, include `boost_filesystem-vc143-mt-x64-1_85.lib`.
+     - For Threading, include `boost_thread-vc143-mt-x64-1_85.lib`.
    - **Debug**
-     - For Threading, include `boost_filesystem-vc143-mt-gd-x64-1_85.lib`.
-     - For Filesystem, include `boost_thread-vc143-mt-gd-x64-1_85.lib`.    
+     - For Filesystem, include `boost_filesystem-vc143-mt-gd-x64-1_85.lib`.
+     - For Threading, include `boost_thread-vc143-mt-gd-x64-1_85.lib`.   
 
 7. **Debug/Release Library Usage**  
    - Use libraries that include "gd" in their names for Debug builds.
@@ -64,7 +64,6 @@
 
 8. **Setting Up Environment Variables**  
    - If your project compiles successfully but encounters missing `.dll` files during runtime, add the **lib64-msvc-14.3** path (where `.lib` and `.dll` files are located) to your system's environment variables.
-
 
  
 ## Demo
