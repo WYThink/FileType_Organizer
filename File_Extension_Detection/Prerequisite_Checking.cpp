@@ -61,7 +61,7 @@ void extension::prerequiste_Check(const std::string_view folder_Path, int flag)
 		else { std::cout << "Read Permission ✅✅" << '\n'; }
 	}
 	
-	else //Destiantion Folder Empty or Not
+	else //Chech Destiantion Folder is Empty or Not
 	{
 		if (false == boost::filesystem::is_empty(folder_Path))
 		{

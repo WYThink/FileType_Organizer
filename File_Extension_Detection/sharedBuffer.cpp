@@ -23,7 +23,7 @@ void sharedBuffer::bufferInput(const std::string& extensionVar)
 	extension_Buffer.push_back(extensionVar);
 }
 
-//Return Referenec to Buffer
+//Return Pointer of Buffer
 std::vector<std::string>* sharedBuffer::buffer_Reference()
 {
 	return &extension_Buffer;
