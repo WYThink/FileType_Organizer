@@ -10,8 +10,8 @@
 
 ## Technologies
 
-- **C++ (Version 1.85.0) **: Core programming language used for developing the application.
-- **Boost C++ Libraries**: 
+- **C++**: Core programming language used for developing the application.
+- **Boost C++ Libraries(Version 1.85.0)**: 
   - **Boost Filesystem**: For handling file and directory operations.
   - **Boost Thread**: For implementing multithreading to improve performance.
 - **Multithreading and Concurrency**: Efficient use of threads to handle file scanning and copying tasks concurrently.
