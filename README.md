@@ -58,8 +58,8 @@
      - For Threading, include `boost_thread-vc143-mt-gd-x64-1_85.lib`.   
 
 7. **Debug/Release Library Usage**  
-   - Use libraries that include "gd" in their names for Debug builds.
-   - Use libraries without "gd" for Release builds.
+   - Use libraries that include "gd" in their names for **Debug** builds.
+   - Use libraries without "gd" for **Release** builds.
 
 8. **Setting Up Environment Variables**  
    - If your project compiles successfully but encounters missing `.dll` files during runtime, add the **lib64-msvc-14.3** path (where `.lib` and `.dll` files are located) to your system's environment variables.
