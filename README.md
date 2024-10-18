@@ -27,7 +27,6 @@
 ## Usage
 - Enter the source folder path when prompted.
 - Specify the destination folder where organized files will be stored.
-- The application will notify if a file with the same name already exists.
 
 ## Installation
 
