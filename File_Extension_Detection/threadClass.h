@@ -3,36 +3,25 @@
 #ifndef __THREADCLASS__
 #define __THREADCLASS__
 
+#include "boost/thread.hpp"
+#include "sharedBuffer.h"
 #include <iostream>
 #include <vector>
-#include "sharedBuffer.h"
-#include "boost/thread.hpp"
 
-//Thread Class
-class threadCreation
-{
+// Thread Class
+class threadCreation {
 private:
-	//sharedBuffer Class Object
-	sharedBuffer* buffer;
-
-	//Buffer Reference
-	std::vector<std::string>* bufferReference;
+  sharedBuffer *buffer;                         // sharedBuffer Class Object
+  std::vector<std::string> *bufferReference;    // Buffer Reference
 
 public:
-	//Thread Creation
-	boost::thread waitThreadCreation;
-	
-	//Constructor
-	threadCreation(sharedBuffer* sharedObject);
+  boost::thread waitThreadCreation;             // Thread Creation
+  threadCreation(sharedBuffer *sharedObject);   // Constructor
+  void threadWAIT();                            // Thread in "Wait" State
+  void removeDuplicates();                      // Remove Duplicates
 
-	//Thread in "Wait" State
-	void threadWAIT();
-
-	//Remove Duplicates
-	void removeDuplicates();
-
-	//Destructor
-	~threadCreation();
+  // Destructor
+  ~threadCreation();
 };
 
 #endif // !__THREADCLASS__
