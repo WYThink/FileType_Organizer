@@ -13,7 +13,7 @@
 class copyFiles
 {
 private:
-    sharedBuffer*							buffer;								//BUFFER Object
+    sharedBuffer*							buffer;								//Buffer Object
     makeFolderClass*						makeFolderObject;					//makeFolderClass Object
     int										bufSize{};							//Buffer Size
     std::string								sourceFolderPath{};					//Source Folder Path
