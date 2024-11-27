@@ -12,12 +12,13 @@
 // Class for Copying Files
 class copyFiles {
 private:
-  sharedBuffer *buffer;                                                         // Buffer Object
+  const std::vector<std::string> *bufferPointer;                                // Const Buffer Pointer
+  const std::vector<std::string> *newFolderPathPointer;                         // Const Buffer "newFolderPath" Pointer
+  
+  sharedBuffer                   *buffer;                                       // Buffer Object
   makeFolderClass *makeFolderObject;                                            // makeFolderClass Object
   int bufSize{};                                                                // Buffer Size
   std::string sourceFolderPath{};                                               // Source Folder Path
-  const std::vector<std::string> *bufferPointer;                                // Const Buffer Pointer
-  const std::vector<std::string> *newFolderPathPointer;                         // Const Buffer "newFolderPath" Pointer
 
   struct fullPath {                                                             // Stores full paths of files for a specific extension.
     std::vector<std::string> pathStore{};                                       // Store Path
