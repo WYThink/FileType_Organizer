@@ -13,46 +13,25 @@
 class copyFiles
 {
 private:
-	//Buffer Object
-	sharedBuffer* buffer;
-
-	//makeFolderClass Object
-	makeFolderClass* makeFolderObject;
+	sharedBuffer*						buffer;										//Buffer Object
+	makeFolderClass*					makeFolderObject;							//makeFolderClass Object
+	int									bufSize{};									//Buffer Size
+	std::string							sourceFolderPath{};							//Source Folder Path
+	const std::vector<std::string>*		bufferPointer;                              //Const Buffer Pointer
+	const std::vector<std::string>*		newFolderPathPointer;						//Const Buffer "newFolderPath" Pointer
 	
-	//Buffer Size
-	int bufSize{};
-
-	// Stores full paths of files for a specific extension.
-	struct fullPath
-	{
-		//Store Path
-		std::vector<std::string> pathStore{};
+	struct fullPath{																// Stores full paths of files for a specific extension.
+		std::vector<std::string>		pathStore{};								//Store Path
 	};
 
-	//Source Folder Path
-	std::string sourceFolderPath{};
-
-	//Const Buffer Pointer
-	const std::vector<std::string>* bufferPointer;
-
-	//Const Buffer "newFolderPath" Pointer
-	const std::vector<std::string>* newFolderPathPointer;
-
 public:
-	//Thread Object
-	boost::thread copyFileThread;
+	boost::thread copyFileThread;													//Thread Object
+	std::vector<struct fullPath> pathVar{};											//Vector of fullPath structs
+	void filePathIterator();														//File Path Iterator
+	void finalyCopy();																//Copy File
 	
-	//Vector of fullPath structs
-	std::vector<struct fullPath> pathVar{};
-
 	//Constructor
 	copyFiles(sharedBuffer* sharedObject, const std::string_view sourcePath , makeFolderClass * makeFolderClassObject);
-
-	//File Path Iterator
-	void filePathIterator();
-
-	//Copy File
-	void finalyCopy();
 
 	//Destructor
 	~copyFiles();
