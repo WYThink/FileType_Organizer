@@ -3,44 +3,26 @@
 #ifndef _SHARED_BUFFER_CLASS
 #define _SHARED_BUFFER_CLASS
 
+#include "boost/thread.hpp"
 #include <iostream>
 #include <vector>
-#include "boost/thread.hpp"
 
-//Shared Buffer Class
-class sharedBuffer
-{
+// Shared Buffer Class
+class sharedBuffer {
 private:
-	//Mutex Obejct
-	boost::mutex mtx;
-
-	//Conditional Variable
-	boost::condition_variable cv;
-
-	//"Ready" variable
-	bool ready{ false };
-
-	//Buffer
-	std::vector<std::string> extension_Buffer{};
+  boost::mutex mtx;                                  // Mutex Obejct
+  boost::condition_variable cv;                      // Conditional Variable
+  bool ready{false};                                 //"Ready" variable
+  std::vector<std::string> extension_Buffer{};       // Buffer
 
 public:
-	//Manual Mutex Lock
-	void bufferLockMutex();
-	
-	//Setter
-	void bufferInput(const std::string& extensionVar);
+  void bufferLockMutex();                            // Manual Mutex Lock
+  void bufferInput(const std::string &extensionVar); // Setter
+  void bufferUnlockMutex();                          // Manual Mutex Unlock
 
-	//Manual Mutex Unlock
-	void bufferUnlockMutex();
-
-	//Return Const Pointer To Buffer
-	std::vector<std::string>* constbufferPointer();
-
-	//Return Reference to Buffer
-	std::vector<std::string>* buffer_Reference();
-
-	//Buffer Size
-	int buffSize();
+  std::vector<std::string> * constbufferPointer();   // Return Const Pointer To Buffer
+  std::vector<std::string> *buffer_Reference();      // Return Reference to Buffer
+  int buffSize();                                    // Buffer Size
 };
 
 #endif // !_SHARED_BUFFER_CLASS
