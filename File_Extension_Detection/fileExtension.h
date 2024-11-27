@@ -26,7 +26,7 @@ public:
   destin_FolderPathReturn(); // Return Destination Folder Path
 
   void source_folder_Path_Input();                        // Path Input (Ask For Folder Path)
-  void destination_folder_Path_Input(); // Path Input (Ask For Folder Path)
+  void destination_folder_Path_Input();                   // Path Input (Ask For Folder Path)
   void sizeCalc(const std::string_view sourceFolder);     // Folder Size Check
   void allExtension(const std::string_view sourceFolder); // Get All Extension
 
