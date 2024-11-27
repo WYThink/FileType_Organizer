@@ -2,28 +2,9 @@
 #include "fileExtension.h"
 #include "boost/filesystem.hpp"
 
-/*
-		Flag = 1 = Source Folder Path
-		Flag = 0 = Destination Folder Path
-
-		1) Valid Path (Source Folder & Destination Folder)
-		2) Is Empty (Source Folder) & Destination Folder)
-			.) Source Folder = Not Empty
-			.) Destination Folder = Should Empty
-
-		3) Copy Permission (Source Folder)
-			-> Read Permission on the source folder: You need "Read" permission to access the file in the source folder to be able to copy it.
-				
-		4) Write Permission (Destination Folder)
-			-> Write Permission on the destination folder: You need "Write" permission on the destination folder to be able to paste the copied file there.
-*/
-
 //folderPathCheck() Function 
 void extension::prerequiste_Check(const std::string_view folder_Path, int flag)
 {
-
-// 1) Valid Path or Not
-/*-------------------------------------------------------------*/
 	if (!boost::filesystem::is_directory(folder_Path))
 	{
 		std::cout << "Invalid Path : \"" << folder_Path << "\"" << '\n';
@@ -34,12 +15,7 @@ void extension::prerequiste_Check(const std::string_view folder_Path, int flag)
 		//Else Destination Folder Path Input	
 		else destination_folder_Path_Input();
 	}
-/*-------------------------------------------------------------*/
 
-
-
-// 2) , 3) , 4)
-/*-------------------------------------------------------------*/
 	if(flag == 1) 
 	{
 		//Source Folder Empty or Not && Copy Permission
@@ -80,5 +56,4 @@ void extension::prerequiste_Check(const std::string_view folder_Path, int flag)
 		}
 		else { std::cout << "Write Permission ✅✅" << '\n'; }
 	}
-/*-------------------------------------------------------------*/
 }
