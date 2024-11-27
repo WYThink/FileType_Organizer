@@ -3,44 +3,29 @@
 #ifndef __MAKEFOLDERCLASS__
 #define __MAKEFOLDERCLASS__
 
-#include <iostream>
-#include <filesystem>
-#include "sharedBuffer.h"
 #include "boost/thread.hpp"
+#include "sharedBuffer.h"
+#include <filesystem>
+#include <iostream>
 
-class makeFolderClass
-{
+class makeFolderClass {
 private:
-	//sharedBuffer Class Object
-	sharedBuffer* buffer;
-
-	//Buffer Pointer
-	const std::vector<std::string>* extenBufferPointer;
-
-	//Buffer Size
-	int buffSize{};
-
-	//Destination Folder Path
-	std::string destination_FolderPath{};
-
-	//Storing The Path Of Newly Created Folder
-	std::vector<std::string> newFolderPath{};
+  sharedBuffer *buffer;                                               // sharedBuffer Class Object
+  const std::vector<std::string> *extenBufferPointer;                 // Buffer Pointer
+  int buffSize{};                                                     // Buffer Size
+  std::string destination_FolderPath{};                               // Destination Folder Path
+  std::vector<std::string> newFolderPath{};                           // Storing The Path Of Newly Created Folder
 
 public:
-	//Thread Object
-	boost::thread makeFolderThread;
+  boost::thread makeFolderThread;                                     // Thread Object
+  void createFolderInDest();                                          // Create Folder
+  const std::vector<std::string> * constnewFolderPathPointer() const; // Return Const Pointer To "newFolderPath"
 
-	//Constructor
-	makeFolderClass(const std::string_view path , sharedBuffer* sharedObject);
+  // Constructor
+  makeFolderClass(const std::string_view path, sharedBuffer *sharedObject);
 
-	//Create Folder
-	void createFolderInDest();
-
-	//Return Const Pointer To "newFolderPath"
-	const std::vector<std::string>* constnewFolderPathPointer() const;
-
-	//Destructor
-	~makeFolderClass();
+  // Destructor
+  ~makeFolderClass();
 };
 
 #endif // __MAKEFOLDERCLASS__
