@@ -1,55 +1,40 @@
-#include <iostream>
-#include <vector>
 #include "sharedBuffer.h"
 #include "boost/thread.hpp"
+#include <iostream>
+#include <vector>
 
-//Lock The Mutex
-void sharedBuffer::bufferLockMutex()
+// Lock The Mutex
+void sharedBuffer::bufferLockMutex() 
 {
-	//Lock Mutex
-	boost::unique_lock<boost::mutex> lock(mtx);
-
-	//Waiting Thread
-	cv.wait(lock, [this] { return !ready; });
-
-	//Ready
-	ready = true;
+  boost::unique_lock<boost::mutex> lock(mtx);                            // Lock Mutex
+  cv.wait(lock, [this] { return !ready; });                              // Waiting
+  ready = true;                                                          // Ready
 }
 
-//Fill the Buffer
-void sharedBuffer::bufferInput(const std::string& extensionVar)
+// Fill the Buffer
+void sharedBuffer::bufferInput(const std::string &extensionVar) 
 {
-	//Push Back
-	extension_Buffer.push_back(extensionVar);
+  extension_Buffer.push_back(extensionVar);                              // Push Back
 }
 
-//Return Pointer of Buffer
-std::vector<std::string>* sharedBuffer::buffer_Reference()
+std::vector<std::string> *sharedBuffer::buffer_Reference() 
 {
-	return &extension_Buffer;
+  return &extension_Buffer;                                              // Return Pointer of Buffer
 }
 
-//Return Const Pointer To Buffer ,so buffer is not modified
-std::vector<std::string>* sharedBuffer::constbufferPointer()
+// Return Const Pointer To Buffer ,so buffer is not modified
+std::vector<std::string> *sharedBuffer::constbufferPointer() 
 {
-	return &extension_Buffer;
+  return &extension_Buffer;
 }
 
-//Buffer Size
-int sharedBuffer::buffSize()
+// Buffer Size
+int sharedBuffer::buffSize() { return extension_Buffer.size(); }
+
+// Unlock The Mutex
+void sharedBuffer::bufferUnlockMutex() 
 {
-	return extension_Buffer.size();
-}
-
-//Unlock The Mutex
-void sharedBuffer::bufferUnlockMutex()
-{
-	//Locking the mutex
-	boost::unique_lock<boost::mutex> lock(mtx);
-
-	//Unlock the Object
-	ready = false;
-
-	//Notifying
-	cv.notify_one();
+  boost::unique_lock<boost::mutex> lock(mtx);                            // Locking the mutex
+  ready = false;                                                         // Unlock the Object
+  cv.notify_one();                                                       // Notifying
 }
