@@ -13,12 +13,12 @@
 // "threadCreation" Class
 class extension : public sharedBuffer {
 private:
-  std::string source_Folder_Path{};							// Source Folder Path
-  std::string destination_Folder_Path{};					// Destination Folder Path
-  std::uintmax_t sourceSize{};								// Source Folder Size
-  std::uintmax_t totalFiles{};								// Calculate Total Files
-  sharedBuffer *buffer;										// sharedBuffer Object Pointer
-  threadCreation *thread;									// threadCreation Object Pointer
+  std::string source_Folder_Path{};      // Source Folder Path
+  std::string destination_Folder_Path{}; // Destination Folder Path
+  std::uintmax_t sourceSize{};           // Source Folder Size
+  std::uintmax_t totalFiles{};           // Calculate Total Files
+  sharedBuffer *buffer;                  // sharedBuffer Object Pointer
+  threadCreation *thread;                // threadCreation Object Pointer
 
 public:
   const std::string_view source_FolderPathReturn(); // Return Source Folder Path
