@@ -1,40 +1,34 @@
+#include "threadClass.h"
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include "threadClass.h"
 
-//Thread In "Wait" State
-void threadCreation::threadWAIT()
-{
-	// Lock Mutex
-	buffer->bufferLockMutex();
+// Thread In "Wait" State
+void threadCreation::threadWAIT() {
 
-	// Calling removeDuplicates()
-	removeDuplicates();
-
-	// Unlock Mutex
-	buffer->bufferUnlockMutex();
+  buffer->bufferLockMutex();                                       // Lock Mutex
+  removeDuplicates();                                              // Calling removeDuplicates()
+  buffer->bufferUnlockMutex();                                     // Unlock Mutex
 }
 
-//Remove Duplicates
-void threadCreation::removeDuplicates()
+void threadCreation::removeDuplicates()                            // Remove Duplicates
 {
-	//Sort The Vector
-	std::sort((*bufferReference).begin(), (*bufferReference).end());
+  std::sort((*bufferReference).begin(),
+            (*bufferReference).end());                             // Sort The Vector
 
-	//Remove Duplicates using std::remove
-	auto last = std::unique((*bufferReference).begin(), (*bufferReference).end());
+  auto last = std::unique(
+      (*bufferReference).begin(),
+      (*bufferReference).end());                                   // Remove Duplicates using std::remove
 
-	//Erase the duplicate elements
-	(*bufferReference).erase(last, (*bufferReference).end());
+  (*bufferReference)
+      .erase(last, (*bufferReference).end());                      // Erase the duplicate elements
 }
 
-//Constructor
-threadCreation::threadCreation(sharedBuffer* sharedObject) : buffer{ sharedObject } , waitThreadCreation{&threadCreation::threadWAIT , this}
-{
-	//Buffer Reference
-	bufferReference = buffer->buffer_Reference();
+// Constructor
+threadCreation::threadCreation(sharedBuffer *sharedObject) : buffer{sharedObject}, waitThreadCreation{&threadCreation::threadWAIT, this} {
+
+  bufferReference = buffer->buffer_Reference(); // Buffer Reference
 }
 
-//Destructor
+// Destructor
 threadCreation::~threadCreation() {}
