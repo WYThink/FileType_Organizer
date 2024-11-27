@@ -52,20 +52,13 @@ copyFiles::copyFiles(sharedBuffer* sharedObject, const std::string_view sourcePa
 	sourceFolderPath { sourcePath } ,
 	makeFolderObject{ makeFolderClassObject }
 {
-	//Total Elements in Buffer
-	bufSize = buffer->buffSize();
-
-	//Resize Vector
-	pathVar.resize(bufSize);
-
-	//Const Buffer Pointer
-	bufferPointer = buffer->constbufferPointer();
-
-	//Getting Pointer to "newFolderPath" variable
-	newFolderPathPointer = makeFolderObject->constnewFolderPathPointer();
-
-	//Starting Thread Execution
-	copyFileThread = boost::thread(&copyFiles::filePathIterator, this);
+	bufSize = buffer->buffSize();                                            //Total Elements in Buffer
+	pathVar.resize(bufSize);                                                 //Resize Vector
+	
+	bufferPointer = buffer->constbufferPointer();                            //Const Buffer Pointer
+	
+	newFolderPathPointer = makeFolderObject->constnewFolderPathPointer();    //Getting Pointer to "newFolderPath" variable
+	copyFileThread = boost::thread(&copyFiles::filePathIterator, this);      //Starting Thread Execution
 }
 
 //Destructor
