@@ -13,10 +13,10 @@
 class copyFiles {
 private:
   
-  int                            bufSize{};                                     // Buffer Size
-  sharedBuffer                   *buffer;                                       // Buffer Object
-  makeFolderClass                *makeFolderObject;                             // makeFolderClass Object
-  std::string                    sourceFolderPath{};                            // Source Folder Path
+  int                    bufSize{};                                             // Buffer Size
+  sharedBuffer           *buffer;                                               // Buffer Object
+  makeFolderClass        *makeFolderObject;                                     // makeFolderClass Object
+  std::string            sourceFolderPath{};                                    // Source Folder Path
   
   const std::vector<std::string> *bufferPointer;                                // Const Buffer Pointer
   const std::vector<std::string> *newFolderPathPointer;                         // Const Buffer "newFolderPath" Pointer
