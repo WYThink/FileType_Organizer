@@ -13,7 +13,7 @@ class sharedBuffer
 	private:
 	  boost::mutex mtx;                                  // Mutex Obejct
 	  boost::condition_variable cv;                      // Conditional Variable
-	  bool ready{false};                                 //"Ready" variable
+	  bool ready{false};                                 // "Ready" variable
 	  std::vector<std::string> extension_Buffer{};       // Buffer
 
 	public:
