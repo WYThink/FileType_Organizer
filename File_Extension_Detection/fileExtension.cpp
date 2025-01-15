@@ -12,7 +12,7 @@ void extension::source_folder_Path_Input()
 	std::getline(std::cin >> std::ws, source_Folder_Path);
 
 	//Calling prerequiste_Check() 
-	prerequiste_Check(source_Folder_Path.c_str() , 1);
+	prerequiste_Check(source_Folder_Path.c_str(), 1);
 }
 
 //Destination folder_Path_Input Function
@@ -23,7 +23,7 @@ void extension::destination_folder_Path_Input()
 	std::getline(std::cin >> std::ws, destination_Folder_Path);
 
 	//Calling prerequiste_Check() 
-	prerequiste_Check(destination_Folder_Path.c_str() , 0);
+	prerequiste_Check(destination_Folder_Path.c_str(), 0);
 }
 
 //Compare Folder Size
@@ -83,7 +83,7 @@ const std::string_view extension::destin_FolderPathReturn()
 }
 
 //Constructor Definition
-extension::extension(sharedBuffer* bufferObject) : buffer(bufferObject)
+extension::extension() : buffer(sharedBuffer::returnPointer())
 {
 	//Warning Message
 	std::cout << "Warning: Files with the same name will be overwritten." << '\n';
